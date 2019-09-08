@@ -1,0 +1,2 @@
+#Hashcode algorythm in T-SQL ([dbo].[GetHashCode])
+https://github.com/microsoft/sql-server-samples/blob/master/samples/applications/aspnet-session-state/aspstate_sql2016_no_retry.sql

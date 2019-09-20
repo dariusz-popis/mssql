@@ -3,10 +3,11 @@
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AWDW">
+    <DataSource Name="MW_Hurtownia">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=hp1\sqlexpress;Initial Catalog=AdventureWorksDW</ConnectString>
+        <Prompt>Podaj nazwę użytkownika i hasło dostępu do źródła danych Hurtownia:</Prompt>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>6e352175-5b13-4e2c-ab8d-0d208784183c</rd:DataSourceID>
@@ -57,7 +58,7 @@ UNION ALL SELECT CAST('2015-12-31' AS date) AS SalesDate, CAST(81946. AS money) 
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Wykres kolumnowy</Value>
+                    <Value>Sprzedaż od Stycznia do Grudnia 2015</Value>
                     <Style>
                       <FontFamily>Segoe UI Light</FontFamily>
                       <FontSize>28pt</FontSize>
@@ -160,6 +161,7 @@ UNION ALL SELECT CAST('2015-12-31' AS date) AS SalesDate, CAST(81946. AS money) 
                     </ChartMarker>
                     <ChartDataLabel>
                       <Style />
+                      <UseValueAsLabel>true</UseValueAsLabel>
                     </ChartDataLabel>
                     <ChartEmptyPoints>
                       <Style />

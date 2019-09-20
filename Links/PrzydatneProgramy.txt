@@ -1,0 +1,8 @@
+#XMind8 - darmowe narzedzie do rysowania "map mysli"
+https://www.xmind.net/download/xmind8
+
+#Visual Studio Code - swietny edytor tekstu (Windows, MacOS, Linux)
+https://code.visualstudio.com/download
+
+#Everything - narzedzie do szybkiego wyszukiwania plików z zaawansowanymi mozliwosciami
+https://www.voidtools.com/downloads/

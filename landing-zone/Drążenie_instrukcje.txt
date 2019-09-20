@@ -1,0 +1,8 @@
+1. Otwórz raport z serwera raportów 101_ZdefiniowaneZrodloDanych.rdl
+2. Zapisz lokalnie raport
+3. W 'Grupy kolumn' wlacz tryb zaawansowany. Potrzebne jest okno 'Wlasciowosci' - wlacz na wstedze Widok, jesli go nie ma.
+4. Zaznacz[EnglishSubcategoryName] i zmien wlasciwosc Hidden na True
+5. W ToggleItem wybierz 'EnglishProduct CategoryName'
+6. W 'Grupy wierszy'wybierz 'Details', zmien wlasciwosc Widocznosc -> Hidden na True
+7. Ustaw wlassciwosc 'Toogle Item' na 'EnglishProduct CategoryName'
+8. Dla Grupy wierszy 'Detials' ustaw Toogle Item na 'EnglishProductSubcategoryName'

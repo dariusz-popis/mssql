@@ -328,3 +328,9 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Darko entries
+*.exe
+Everything.db
+Everything.ini
+Everything.lng

@@ -1,3 +1,5 @@
+use AdventureWorks2016;
+
 with vProdukt as
  (
 select p.ProductID IdProduktu, p.Name, p.Color

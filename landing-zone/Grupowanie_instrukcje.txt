@@ -1,0 +1,42 @@
+1. Otwórz raport z serwera raportów 01_ZdefiniowaneZrodloDanych.rdl
+2. Zapisz lokalnie raport
+3. Dodawanie macierzy z grupowaniem:
+	1. W drugim wierszu lewej kolumnu kliknij w przycisk wyboru zródla i wybierz EnglishProductSubcategoryName
+	2. Zmien tytul kolumny na Subcategory, dostosuj szerokosc, zastosuj pogrubienie czcionki
+	3. W drugim wierszu drugiej kolumny (Dane) wybierz SalesValue
+	4. Kilknij prawym klawiszem myszy na [Sum(SalesValue)] i wybierz Wlasciwosci Pola Tekstowego
+	5. Ustaw wartosc numeryczna na 0 miejsc po przecinku i dodaj separator tysiecy
+
+4. Dodaj grupe kolumn
+	1. W grupach kolumn dwukliknij na ColumnGroup
+	2. Zmien nazwe ColumnGroup na Year
+	3. W 'Wyrazenia grupy' w Grupuj wedlug wybierz [Year]
+	4. W 'Sortowanie' dodaj nowe sortowanie i 'Sortuj wedlug' wybierz [Year]. Zamknij okno 'OK'
+	5. W naglówku kolumny zmien 'Sales Value' na [Year] (! nie Year)
+
+5. Dodaj grupe wierszy
+	1. Klinkij prawy klawisz myszy na selektorze wierszy z lewej strony [EnglishProductSubCategoryName]
+	2. Dodaj Grupe nadrzedna w 'Grupa wierszy'
+	3. Wybierz grupuj wedlug [EnglishProductCategoryName], zaznacz 'Dodaj stopke grupy'
+	4. Zmien naglówek na 'Category', dostosuj rozmiar kolumny
+	5. W dolnym wierszu pod kolumna'Subcategory' wpisz 'Razem'. Wyrównaj do prawej.
+	6. W dolnym prawym polu wybierz dane 'SalesValue'
+	7. Poprzez 'Wlasciowosci pola tekstowego' sformatuj liczbe zgodnie z wczesniej przyjetym standardem (separator tysiecy, bez liczb po przecinku).
+	8. 
+
+6. Dodanie kolumny z podsumowaniem:
+	1. Prawy klawisz myszy na selektorze kolumny -> Wstaw kolumne -> Na zewnatrz grupy do prawej
+	2. W srodkowym wierszu prawej kolumny wybierz [SalesValue], sofrmatuj [SalesValue] zgodnie z przyjeta regula
+
+7. Dadanie wiersza podsumowujacego:
+	1. Wybierz pole [EnglishProductCategoryName], prawym klawiszem myszy wybierz dolny selektor wiersza
+	2. Wybierz 'Wstaw wiersz' -> 'Na zewnatrz grupy - ponizej'
+	3. W dolnym polu kolumny 'Category' wpisz 'Grand Total'. Sformatuj na pogrubiona, czerwona czcionke
+	4. W dolnym polu kolumny '[Year]' wybierz 'SalesValue'. Sformatuj jw.
+
+8. Zastosowanie formatowania warunkowego
+	1. 
+
+=iif(sum(Fields!SalesValue.Value)<5000,"Orange","Black")
+=iif(sum(Fields!SalesValue.Value)<500,"Yellow","Default")
+

@@ -1,0 +1,7 @@
+hp1\RSUsers
+Pa$$w0rd
+
+
+hp1\sqlexpress
+login: RSSqlUser
+Pa$$w0rd

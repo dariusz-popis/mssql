@@ -6,3 +6,10 @@ https://code.visualstudio.com/download
 
 #Everything - narzedzie do szybkiego wyszukiwania plików z zaawansowanymi mozliwosciami
 https://www.voidtools.com/downloads/
+
+#System kontrolowania wersji plików (git)
+https://git-scm.com
+
+#Podrecznik do narzedzia kontrolowania wersji plikow (git)
+https://git-scm.com/book/en/v2
+

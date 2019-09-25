@@ -1,6 +1,6 @@
 Definiowanie danych
 1. Zdefiniuj jakiekolwiek źródło danych
-2. Zaimportuj Zestaw Danych z pliku SprzedazKPI.sql
+2. Zaimportuj Zestaw Danych z pliku SprzedazKPI.sql (lub wklej zawartość do zestawu danych - Zapytanie)
 
 Użycie kreatora
 3. Użyj kreatora macierzy dodając wg porządku (kolejność ma znaczenie):
@@ -19,7 +19,7 @@ Kolorowanie tła zgodnie z ideą KPI (Key Performance Indicator)
 8. Na przecięciu drugiego wiersza dla grupy Kategoria i kolumny Wartość dokonaj formatowania warunkowego
     1. Wybierz prawym klawiszem myszy "Właściwości pola tekstowego..."
     2. Dla wypełnienia wywołaj edytor wyrażeń (Fx)
-    3 Wprowadź zamiast koloru wyrażenie:
+    3. Wprowadź zamiast koloru wyrażenie:
         =IIF(Sum(Fields!Wartość.Value) >= 5000 ,"Lime", IIF(Sum(Fields!Wartość.Value) < 2500, "Red","Yellow"))
 Przetestuj wygląd raportu
 
@@ -37,8 +37,9 @@ Dodanie "Wskaźnika/Gauge" do raportu
 Dodanie wskaźnika KPI w postaci "sygnalizacji świetlnych"
 14. Dodaj kolumnę z prawej strony macierzy
 15. Na poziomie wiersza z poprzednio zdefiniowanym wskaźnikiem, dodaj wskaźnik "3 sygnalizacje świetlne (bez obwódek)"
-16. We właściowościach wskaźnika -> Wartość i stany, wybierz w "Jednostce miary stanów" Liczbowe.
-17. Ustaw kolejno wartości 'Początek' 'Koniec' na:
+16. Dla danych miernika, wybierz Ilość (Sum[Ilość])
+17. We właściowościach wskaźnika -> Wartość i stany, wybierz w "Jednostce miary stanów" Liczbowe.
+18. Ustaw kolejno wartości 'Początek' 'Koniec' na:
     0, 50
     51, 100
     100, (puste pole - brak wartości)

@@ -17,8 +17,9 @@ https://visualstudio.microsoft.com/downloads/
 
 #Jest także samodzielny plik instalacyjny, jeśli ktoś chciałby tylko budować rozwiązania BI (w tym Raporty)
 https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer
-https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017
 
+#Mobile Report Publisher
+https://www.microsoft.com/en-us/download/details.aspx?id=50400&WT.mc_id=rss_alldownloads_all
 
 #Visual Studio Code - jeden z najlepszych edytorów tekstu i nie tylko (Windows, MacOS, Linux)
 https://code.visualstudio.com/download

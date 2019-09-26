@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="WA_Hurtownia">
+      <DataSourceReference>/AdwentureWorksDW</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>5dc1b2d5-57d2-4aae-af66-3890d5f3e321</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Kraje">
+      <Query>
+        <DataSourceName>WA_Hurtownia</DataSourceName>
+        <CommandText>select
+geo.CountryRegionCode KodKraju,
+geo.EnglishCountryRegionName Kraj,
+count(distinct geo.StateProvinceCode) IleProwincji
+  from DimGeography geo
+  group by geo.CountryRegionCode,
+            geo.EnglishCountryRegionName</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="KodKraju">
+          <DataField>KodKraju</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NazwaKraju">
+          <DataField>Kraj</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IleProwincji">
+          <DataField>IleProwincji</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Kraj">
+          <Value>=Fields!NazwaKraju.Value+" ("+Fields!IleProwincji.Value.ToString()+")"</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Prowincje">
+      <Query>
+        <DataSourceName>WA_Hurtownia</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@KodKraju">
+            <Value>=Parameters!KodKraju.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>select distinct
+    geo.CountryRegionCode KodKraju,
+    geo.EnglishCountryRegionName Kraj,
+    geo.StateProvinceName Prowincja
+  from DimGeography geo
+ where geo.CountryRegionCode = @KodKraju</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="KodKraju">
+          <DataField>KodKraju</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Kraj">
+          <DataField>Kraj</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Prowincja">
+          <DataField>Prowincja</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="ReportTitle">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Parametryzacja Parametru</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>28pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>SlateBlue</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Top>0mm</Top>
+            <Height>14.2875mm</Height>
+            <Width>152.4mm</Width>
+            <Style>
+              <Border>
+                <Color>LightBlue</Color>
+                <Style>None</Style>
+                <Width>2pt</Width>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>57.15mm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>152.4mm</Width>
+      <Page>
+        <PageFooter>
+          <Height>11.43mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>5.08mm</Top>
+              <Left>101.6mm</Left>
+              <Height>6.35mm</Height>
+              <Width>50.8mm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>297.00001mm</PageHeight>
+        <PageWidth>210mm</PageWidth>
+        <LeftMargin>20mm</LeftMargin>
+        <RightMargin>20mm</RightMargin>
+        <TopMargin>20mm</TopMargin>
+        <BottomMargin>20mm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="KodKraju">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>Kraje</DataSetName>
+          <ValueField>KodKraju</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Kraj</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Kraje</DataSetName>
+          <ValueField>KodKraju</ValueField>
+          <LabelField>Kraj</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Prowincja">
+      <DataType>String</DataType>
+      <Prompt>Prowincja</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Prowincje</DataSetName>
+          <ValueField>Prowincja</ValueField>
+          <LabelField>Prowincja</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>KodKraju</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Prowincja</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://hp1/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>2ead733e-8ed5-4bf9-ad1e-812f5a25e66c</rd:ReportID>
+</Report>

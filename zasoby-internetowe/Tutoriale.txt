@@ -1,5 +1,9 @@
-#Tutoriale Microsoft
+#Tutoriale Microsoft dla Report Builder
 https://docs.microsoft.com/en-us/sql/reporting-services/report-builder-tutorials?view=sql-server-2017
 
+#Dokumentacja dla T-Sql
+https://docs.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-2017
+
+#Inne
 #Hashcode algorythm in T-SQL ([dbo].[GetHashCode])
 https://github.com/microsoft/sql-server-samples/blob/master/samples/applications/aspnet-session-state/aspstate_sql2016_no_retry.sql

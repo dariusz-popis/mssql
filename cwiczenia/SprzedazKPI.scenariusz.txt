@@ -1,0 +1,52 @@
+Definiowanie danych
+1. Zdefiniuj jakiekolwiek źródło danych
+2. Zaimportuj Zestaw Danych z pliku SprzedazKPI.sql (lub wklej zawartość do zestawu danych - Zapytanie)
+
+Użycie kreatora
+3. Użyj kreatora macierzy dodając wg porządku (kolejność ma znaczenie):
+    1. Wartości: Produkt, Sum(Ilość), Sum(Wartość)
+    2. Grupy wierszy: DataSprzedaży, Kategoria
+    Kliknij [Dalej]
+4. W opcjach upewnij się, że jest zaznaczone "Pokaż sumy częściowe i końcowe", z zaznaczeniem "Blokowany, suma częściowa na dole"
+5  Odznacz Rozwiń/zwiń grupy
+    Kliknij [Dalej] i później [Zakończ]
+6. Zwróć uwagę na hierarchię grupowania wierszy: DataSprzedazy, Kategoria, (Szczegóły)
+
+*Zmień nazwę macierzy na "TablixSprzedaz"
+
+Kolorowanie tła zgodnie z ideą KPI (Key Performance Indicator)
+7. Wybierz format Data dla pola [DataSprzedaży]
+8. Na przecięciu drugiego wiersza dla grupy Kategoria i kolumny Wartość dokonaj formatowania warunkowego
+    1. Wybierz prawym klawiszem myszy "Właściwości pola tekstowego..."
+    2. Dla wypełnienia wywołaj edytor wyrażeń (Fx)
+    3. Wprowadź zamiast koloru wyrażenie:
+        =IIF(Sum(Fields!Wartość.Value) >= 5000 ,"Lime", IIF(Sum(Fields!Wartość.Value) < 2500, "Red","Yellow"))
+Przetestuj wygląd raportu
+
+Dodanie "Wskaźnika/Gauge" do raportu
+9. Dodaj kolumnę z prawej strony raportu (prawy klawisz myszy na Wartość->Dodaj kolumnę z prawej strony)
+10. Wstaw na poziomie wiersza "Razem" dla grupy [Data Sprzedazy] miernik Liniowy - poziomy
+11. Wybierz w "Dane miernika" dla "LinearPointer1" [Sum(Wartość)]
+12. Ustaw maksymalną wartość Maksymalnie dla skali miernika na 25000 (prawy klawisz myszy na mierniku->Właściwości skali)
+    a) Bardziej realnie: ustaw za pomocą edytora wyrażeń maksymalną wartość skali na wyrażenie:
+        =Max(Sum(Fields!Wartość.Value), "TablixSprzedaz")
+    * wykona się bezbłędnie jeśli została nadana nazwa macierzy na "TablixSprzedaz"
+      jeśli nie, sprawdź jaką macierz posiada nazwę i wprowadź odpowiednio w wyrażeniu
+13. Nadaj nazwę kolumnie "Liniowy KPI"
+
+Dodanie wskaźnika KPI w postaci "sygnalizacji świetlnych"
+14. Dodaj kolumnę z prawej strony macierzy
+15. Na poziomie wiersza z poprzednio zdefiniowanym wskaźnikiem, dodaj wskaźnik "3 sygnalizacje świetlne (bez obwódek)"
+16. Dla danych miernika, wybierz Ilość (Sum[Ilość])
+17. We właściowościach wskaźnika -> Wartość i stany, wybierz w "Jednostce miary stanów" Liczbowe.
+18. Ustaw kolejno wartości 'Początek' 'Koniec' na:
+    0, 50
+    51, 100
+    100, (puste pole - brak wartości)
+    
+
+
+
+
+
+

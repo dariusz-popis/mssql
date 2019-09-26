@@ -1,0 +1,45 @@
+#NARZĘDZIA - polecam wybierać wersje angielskie
+
+#Strona pobierania Management Studio
+https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017
+
+#Strona pobierania Report Builder:
+https://www.microsoft.com/en-us/download/details.aspx?id=53613&WT.mc_id=rss_alldownloads_all
+
+#Sql Server Data Tools - bardziej zaawansowane narzędzie do budowania raportów
+#Jest jako dodatek do darmowego Visual Studio - jeśli ktoś oprócz budowania raportów
+#zajmowałby się kodowaniem:
+
+#Adres z opisem instalacji:
+https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#install-ssdt-with-visual-studio-2017
+#Adres pobierania Visual Studio Community Edition (wersja samodzielnych developerów lub dla małych firm)
+https://visualstudio.microsoft.com/downloads/
+
+#Jest także samodzielny plik instalacyjny, jeśli ktoś chciałby tylko budować rozwiązania BI (w tym Raporty)
+https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer
+
+#Mobile Report Publisher
+https://www.microsoft.com/en-us/download/details.aspx?id=50400&WT.mc_id=rss_alldownloads_all
+
+#Visual Studio Code - jeden z najlepszych edytorów tekstu i nie tylko (Windows, MacOS, Linux)
+https://code.visualstudio.com/download
+
+#Inne narzędziowe programy
+
+#XMind8 - darmowe narzedzie do rysowania "map mysli"
+https://www.xmind.net/download/xmind8
+
+#Everything - narzedzie do szybkiego wyszukiwania plików z zaawansowanymi mozliwosciami
+https://www.voidtools.com/downloads/
+
+
+#GIT
+
+#System kontrolowania wersji plików (git). Na stronie darmowy podręcznik online. Część po Polsku.
+https://git-scm.com
+#dodatki do Visual Studio Code dla git: Git Lens oraz Gith Graph
+#instaluje sie z VS Code - Extensions (Ctrl+Shift+X) - wpisac w polu wyszukiwania
+
+#Podrecznik do narzedzia kontrolowania wersji plikow (git)
+https://git-scm.com/book/en/v2
+

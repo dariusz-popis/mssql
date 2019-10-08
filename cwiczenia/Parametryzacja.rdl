@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DowolneZrodloDanych">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=rs1;Initial Catalog=master</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>870661d9-6f2b-495b-bdf6-67f3ab5a32d2</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Kraje">
+      <Query>
+        <DataSourceName>DowolneZrodloDanych</DataSourceName>
+        <CommandText>with Kraje (Kod,Nazwa,LiczbaProwincji)
+as (
+    select 'AU','Australia',5
+    union all
+    select 'CA','Canada',6
+    union all
+    select 'FR','France',17
+    union all
+    select 'DE','Germany',6
+    union all
+    select 'GB','United Kingdom',1
+    union all
+    select 'US','United States',36
+)
+select * from Kraje</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Kod">
+          <DataField>Kod</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nazwa">
+          <DataField>Nazwa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LiczbaProwincji">
+          <DataField>LiczbaProwincji</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Prowincje">
+      <Query>
+        <DataSourceName>DowolneZrodloDanych</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@KodKraju">
+            <Value>=Parameters!KodKraju.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>-- Celem przetestowania w Management Studio, trzeba usunąć komentarz w linii deklarującej zmienną (następna linia)
+--declare @KodKraju nvarchar(3) = 'AU'
+
+;with Prowincje (KodKraju, KodProwincji, NazwaProwincji) 
+as (
+    select 'AU','NSW','New South Wales'
+    union all
+    select 'AU','QLD','Queensland'
+    union all
+    select 'AU','SA','South Australia'
+    union all
+    select 'AU','TAS','Tasmania'
+    union all
+    select 'AU','VIC','Victoria'
+    union all
+    select 'CA','AB','Alberta'
+    union all
+    select 'CA','BC','British Columbia'
+    union all
+    select 'CA','MB','Manitoba'
+    union all
+    select 'CA','NB','Brunswick'
+    union all
+    select 'CA','ON','Ontario'
+    union all
+    select 'CA','QC','Quebec'
+    union all
+    select 'DE','BB','Brandenburg'
+    union all
+    select 'DE','BY','Bayern'
+    union all
+    select 'DE','HE','Hessen'
+    union all
+    select 'DE','HH','Hamburg'
+    union all
+    select 'DE','NW','Nordrhein-Westfalen'
+    union all
+    select 'DE','SL','Saarland'
+    union all
+    select 'FR','17','Charente-Maritime'
+    union all
+    select 'FR','31','Garonne (Haute)'
+    union all
+    select 'FR','32','Gers'
+    union all
+    select 'FR','41','Loir et Cher'
+    union all
+    select 'FR','45','Loiret'
+    union all
+    select 'FR','57','Moselle'
+    union all
+    select 'FR','59','Nord'
+    union all
+    select 'FR','62','Pas de Calais'
+    union all
+    select 'FR','75','Seine (Paris)'
+    union all
+    select 'FR','77','Seine et Marne'
+    union all
+    select 'FR','78','Yveline'
+    union all
+    select 'FR','80','Somme'
+    union all
+    select 'FR','91','Essonne'
+    union all
+    select 'FR','92','Hauts de Seine'
+    union all
+    select 'FR','93','Seine Saint Denis'
+    union all
+    select 'FR','94','Val de Marne'
+    union all
+    select 'FR','95','Val d''Oise'
+    union all
+    select 'GB','ENG','England'
+    union all
+    select 'US','AL','Alabama'
+    union all
+    select 'US','AZ','Arizona'
+    union all
+    select 'US','CA','California'
+    union all
+    select 'US','CO','Colorado'
+    union all
+    select 'US','CT','Connecticut'
+    union all
+    select 'US','FL','Florida'
+    union all
+    select 'US','GA','Georgia'
+    union all
+    select 'US','ID','Idaho'
+    union all
+    select 'US','IL','Illinois'
+    union all
+    select 'US','IN','Indiana'
+    union all
+    select 'US','KY','Kentucky'
+    union all
+    select 'US','MA','Massachusetts'
+    union all
+    select 'US','MD','Maryland'
+    union all
+    select 'US','ME','Maine'
+    union all
+    select 'US','MI','Michigan'
+    union all
+    select 'US','MN','Minnesota'
+    union all
+    select 'US','MO','Missouri'
+    union all
+    select 'US','MS','Mississippi'
+    union all
+    select 'US','MT','Montana'
+    union all
+    select 'US','NC','North Carolina'
+    union all
+    select 'US','NH','New Hampshire'
+    union all
+    select 'US','NM','New Mexico'
+    union all
+    select 'US','NV','Nevada'
+    union all
+    select 'US','NY','New York'
+    union all
+    select 'US','OH','Ohio'
+    union all
+    select 'US','OR','Oregon'
+    union all
+    select 'US','RI','Rhode Island'
+    union all
+    select 'US','SC','South Carolina'
+    union all
+    select 'US','SD','South Dakota'
+    union all
+    select 'US','TN','Tennessee'
+    union all
+    select 'US','TX','Texas'
+    union all
+    select 'US','UT','Utah'
+    union all
+    select 'US','VA','Virginia'
+    union all
+    select 'US','WA','Washington'
+    union all
+    select 'US','WI','Wisconsin'
+    union all
+    select 'US','WY','Wyoming'
+)
+select * 
+  from Prowincje
+ where KodKraju  = @KodKraju</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="KodKraju">
+          <DataField>KodKraju</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KodProwincji">
+          <DataField>KodProwincji</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NazwaProwincji">
+          <DataField>NazwaProwincji</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="ReportTitle">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>28pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Top>0mm</Top>
+            <Height>12.7mm</Height>
+            <Width>139.7mm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>57.15mm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>152.4mm</Width>
+      <Page>
+        <PageFooter>
+          <Height>11.43mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>5.08mm</Top>
+              <Left>101.6mm</Left>
+              <Height>6.35mm</Height>
+              <Width>50.8mm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="KodKraju">
+      <DataType>String</DataType>
+      <Prompt>Kod Kraju</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Kraje</DataSetName>
+          <ValueField>Kod</ValueField>
+          <LabelField>Nazwa</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Prowincje">
+      <DataType>String</DataType>
+      <Prompt>Prowincje</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Prowincje</DataSetName>
+          <ValueField>KodProwincji</ValueField>
+          <LabelField>NazwaProwincji</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>KodKraju</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Prowincje</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportID>beb53143-143d-4e1d-a278-07419c9fd981</rd:ReportID>
+</Report>

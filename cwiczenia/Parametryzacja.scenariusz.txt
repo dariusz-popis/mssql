@@ -1,0 +1,37 @@
+Celem ćwiczenia jest poznanie paremetrów będących listami wartości pochodzących ze źródła danych.
+
+W bazie danych znajduje się lista wszystkich prowincji, które przynależą do poszczególnych krajów.
+Użytkownikowi raportu chcemy dać możliwość wyboru regionu, którego będzie dotyczył raport.
+Jednak wybór spośród wszystkich prowincji na świecie stanowiło by niemały kłopot.
+Chcemy aby użytkownik po wybraniu kraju miał do wyboru listę prowincji występujących w danym kraju.
+
+1. Wybierz źródło danych z połączeniem do dowolnej bazy danych.
+2. Dodaj nowy zestaw danych osadzonych w raporcie, importując/wklejając sql z pliku zapytaniaSQL\kraje.sql
+    1. Nadaj nazwę zestawu: "Kraje"
+    2. Wklej/imporuj sql z zapytaniaSQL\kraje.sql. Wybierz zdefiniowane źródło danych.
+
+3. Dodaj nowy zestaw danych osadzonych w raporcie importując/wklejając sql z pliku zapytaniaSQL\regiony.sql
+    1. Nadaj nazwę zestawu: "Prowincje"
+    2. Wklej/imporuj sql z zapytaniaSQL\prowincje.sql. Wybierz zdefiniowane źródło danych.
+    3. Po zatwierdzeniu zestawu pojawi się na liście Parametry (Parameters) parametr KodKraju.
+       Report Builder dodaje automatycznie taki parametr, ponieważ w zapytaniu występuje @KodKraju.
+       Report Builder automatycznie analizując kod zapytania rozpoznaje @KodKraju i tworzy właśnie taki parametr.
+
+4. Dodaj listę dostępnych wartości dla parametru KodKraju
+    1. Dwuklik na parametrze KodKraju - pojawi się okienko
+    2. Przejdź do "Dostępne wartości"
+    3. Wybierz "Pobierz wartości z zapytania SQL"
+    4. Wybierz "Kraje" jako zestaw danych
+    5. Wybierz pole wartości: "Kod" a Pole etykiety: "Nazwa"
+
+Uruchom raport i sprawdź czy jest widoczny parametr "Kod Kraju" z listą wyboru dostępnych krajów.
+
+5. Dodaj parametr (Prawy klawisz myszy na Parametry -> Dodaj parametr)
+    1. Nadaj nazwę "Prowincje" i "Prowincje" właściwości poniżej (Prompt)
+    2. Wybierz dla dostępnych wartości "Pobierz wartości z zapytania SQL"
+       Zestaw danych: "Prowincje"
+       Pole wartości: "KodProwincji"
+       Pole etykiety: "NazwaProwincji"
+
+Uruchom raport i zauważ jak po wybraniu kraju zmienia się lista dostępnych prowincji w parametrze "Prowincje"
+

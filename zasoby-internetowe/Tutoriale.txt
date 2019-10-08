@@ -4,6 +4,9 @@ https://docs.microsoft.com/en-us/sql/reporting-services/report-builder-tutorials
 #Dokumentacja dla T-Sql
 https://docs.microsoft.com/en-us/sql/t-sql/language-reference?view=sql-server-2017
 
+#Kopie przykładowych baz AdventureWorks
+https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks
+
 #Inne
 #Hashcode algorythm in T-SQL ([dbo].[GetHashCode])
 https://github.com/microsoft/sql-server-samples/blob/master/samples/applications/aspnet-session-state/aspstate_sql2016_no_retry.sql
